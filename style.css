@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Press Start 2P', monospace;  /* Custom font */
+  font-family: 'Roboto Mono', monospace;
   color: white;
   text-align: center;
   background-color: black;
@@ -17,20 +17,21 @@ body {
   position: relative;
 }
 
-.text-container {
+.ascii-art-container {
   position: absolute;
-  top: 30%;  /* Adjusted to move the text a bit lower */
+  top: 35%; /* Adjusted to move text up */
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
   z-index: 2;
 }
 
-.main-text {
-  font-size: 96px;  /* Larger text for fog.fyi */
-  margin-bottom: 10px; /* Space between the two texts */
+.ascii-art {
+  white-space: pre;
+  font-size: 100px !important; /* Increase font size */
 }
 
 .small-text {
-  font-size: 24px;  /* Smaller text for "coming soon..." */
-  margin-top: 10px;
+  font-size: 36px !important; /* Increase font size */
+  margin-top: 20px;
 }
