@@ -5,13 +5,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>fog.fyi</title>
+  
+  <!-- Link to Google Fonts for custom font -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="ascii-art-container">
-    <div class="ascii-art">fog.fyi</div>
-    <div class="small-text">coming soon...</div>
+  <div class="text-container">
+    <h1 class="main-text">fog.fyi</h1>
+    <p class="small-text">coming soon...</p>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -51,8 +55,10 @@
 
     function animate() {
       requestAnimationFrame(animate);
+
       stars.rotation.x += 0.0005;
       stars.rotation.y += 0.0005;
+
       renderer.render(scene, camera);
     }
 
