@@ -1,0 +1,37 @@
+/* margins and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: monospace;
+  color: white;
+  text-align: center;
+  background-color: black;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ascii-art-container {
+  position: absolute;
+  top: 40%; /* adjusted
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 2;
+}
+
+.ascii-art {
+  white-space: pre;
+  font-size: 56px;
+}
+
+.small-text {
+  font-size: 16px;
+  margin-top: 10px;
+}
