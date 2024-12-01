@@ -2,73 +2,68 @@
 <html lang="en">
 
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>fog.fyi</title>
- 
- <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fog.fyi</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
- <div class="ascii-art-container">
-  <div class="ascii-art">fog.fyi</div>
-  <div class="small-text">coming soon...</div>
- </div>
- 
- <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
- <script>
+  <div class="ascii-art-container">
+    <div class="ascii-art">fog.fyi</div>
+    <div class="small-text">coming soon...</div>
+  </div>
 
-  let scene, camera, renderer;
-  let stars;
-  let starGeometry, starMaterial;
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script>
+    let scene, camera, renderer;
+    let stars;
+    let starGeometry, starMaterial;
 
-  function init() {
+    function init() {
+      scene = new THREE.Scene();
+      camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
-   scene = new THREE.Scene();
-   camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      renderer = new THREE.WebGLRenderer();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      document.body.appendChild(renderer.domElement);
 
-   renderer = new THREE.WebGLRenderer();
-   renderer.setSize(window.innerWidth, window.innerHeight);
-   document.body.appendChild(renderer.domElement);
+      starGeometry = new THREE.BufferGeometry();
+      starMaterial = new THREE.PointsMaterial({ color: 0x888888, size: 0.5 });
 
-   starGeometry = new THREE.BufferGeometry();
-   starMaterial = new THREE.PointsMaterial({ color: 0x888888, size: 0.5 });
+      let starCount = 10000;
+      let positions = new Float32Array(starCount * 3);
 
-   let starCount = 10000;
-   let positions = new Float32Array(starCount * 3);
+      for (let i = 0; i < starCount; i++) {
+        positions[i * 3] = Math.random() * 2000 - 1000;
+        positions[i * 3 + 1] = Math.random() * 2000 - 1000;
+        positions[i * 3 + 2] = Math.random() * 2000 - 1000;
+      }
 
-   for (let i = 0; i < starCount; i++) {
-    positions[i * 3] = Math.random() * 2000 - 1000;
-    positions[i * 3 + 1] = Math.random() * 2000 - 1000;
-    positions[i * 3 + 2] = Math.random() * 2000 - 1000;
-   }
+      starGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      stars = new THREE.Points(starGeometry, starMaterial);
+      scene.add(stars);
 
-   starGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-   stars = new THREE.Points(starGeometry, starMaterial);
-   scene.add(stars);
+      camera.position.z = 5;
 
-   camera.position.z = 5;
+      animate();
+    }
 
-   animate();
-  }
+    function animate() {
+      requestAnimationFrame(animate);
+      stars.rotation.x += 0.0005;
+      stars.rotation.y += 0.0005;
+      renderer.render(scene, camera);
+    }
 
-  function animate() {
-   requestAnimationFrame(animate);
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
 
-   stars.rotation.x += 0.0005;
-   stars.rotation.y += 0.0005;
-   
-   renderer.render(scene, camera);
-  }
-
-  window.addEventListener('resize', () => {
-   camera.aspect = window.innerWidth / window.innerHeight;
-   camera.updateProjectionMatrix();
-   renderer.setSize(window.innerWidth, window.innerHeight);
-  });
-  
-  init();
- </script>
+    init();
+  </script>
 </body>
 
 </html>
