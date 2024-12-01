@@ -1,4 +1,3 @@
-/* margins and padding */
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +5,7 @@
 }
 
 body {
-  font-family: 'Courier New', monospace; 
+  font-family: 'Roboto Mono', monospace;
   color: white;
   text-align: center;
   background-color: black;
@@ -15,28 +14,24 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative; 
+  position: relative;
 }
 
 .ascii-art-container {
   position: absolute;
-  top: 40%; 
+  top: 35%; /* Adjusted to move text up */
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
-  z-index: 2; 
+  z-index: 2;
 }
-
 
 .ascii-art {
   white-space: pre;
-  font-size: 56px !important;
-  font-family: 'Courier New', monospace; /
+  font-size: 100px !important; /* Increase font size */
 }
 
-
 .small-text {
-  font-size: 16px !important;
-  margin-top: 10px !important;
-  font-family: 'Courier New', monospace;
+  font-size: 36px !important; /* Increase font size */
+  margin-top: 20px;
 }
